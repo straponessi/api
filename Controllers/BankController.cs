@@ -6,14 +6,9 @@ namespace api.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
-    public class BankController : Controller
+    public class BankController(BankService bankService) : Controller
     {
-        private readonly BankService _bankService;
-
-        public BankController(BankService bankService)
-        {
-            _bankService = bankService;
-        }
+        private readonly BankService _bankService = bankService;
 
         [HttpPost("{playerId:long}/deposit")]
         public async Task<IActionResult> Deposit(long playerId, [FromBody] long amount)
