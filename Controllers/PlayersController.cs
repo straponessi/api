@@ -6,14 +6,9 @@ namespace api.Controllers
 
     [ApiController]
     [Route("api/[controller]")]
-    public class PlayersController : Controller
+    public class PlayersController(UserService userService) : Controller
     {
-        private readonly UserService _userService;
-
-        public PlayersController(UserService userService)
-        {
-            _userService = userService;
-        }
+        private readonly UserService _userService = userService;
 
         [HttpPost]
         public async Task<IActionResult> CreatePlayer([FromBody] string name)

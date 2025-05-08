@@ -4,14 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
 {
-    public class UserService
+    public class UserService(ApiDbContext db)
     {
-        private readonly ApiDbContext _db;
-
-        public UserService(ApiDbContext db)
-        {
-            _db = db;
-        }
+        private readonly ApiDbContext _db = db;
 
         public async Task<Player> CreatePlayerAsync(string name)
         {

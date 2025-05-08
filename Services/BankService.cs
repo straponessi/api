@@ -4,14 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
 {
-    public class BankService
+    public class BankService(ApiDbContext db)
     {
-        private readonly ApiDbContext _db;
-
-        public BankService(ApiDbContext db)
-        {
-            _db = db; 
-        }
+        private readonly ApiDbContext _db = db;
 
         public async Task DepositAsync(long playerId, long amount, string source = "Deposit")
         {
